@@ -1,18 +1,11 @@
-buildscript {
-    ext {
-        kotlin_version = "1.6.21"
-        koin_version = "3.2.2"
-        ksp_version = "1.6.21-1.0.6"
-        koin_ksp_version = "1.0.3"
-        retrofit_version = "2.9.0"
-    }
-}
-
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id "com.google.devtools.ksp" version "$ksp_version"
 }
+
+var version_major = 1
+var version_patch = 0
+var version_minor = 0
 
 android {
     compileSdk 32
@@ -21,12 +14,14 @@ android {
         applicationId "com.bankuish.challenge"
         minSdk 23
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode = version_major * 100 + version_patch * 10 + version_minor
+        versionName = "$version_major.$version_patch.$version_minor"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
 
+        buildConfigField("String", "BASE_API_URL",  "\"https://api.github.com/\"")
+
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -43,12 +38,13 @@ android {
     buildFeatures {
         viewBinding true
     }
+
 }
 
 var koin_version = "3.2.2"
+var retrofit_version = "2.9.0"
 
 dependencies {
-
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
@@ -61,16 +57,18 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
 
     // Koin
-    implementation "io.insert-koin:koin-core:$koin_version"
-    implementation "io.insert-koin:koin-annotations:$koin_ksp_version"
-    ksp "io.insert-koin:koin-ksp-compiler:$koin_ksp_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
 
     testImplementation 'junit:junit:4.13.2'
+    testImplementation "io.insert-koin:koin-test:$koin_version"
+    testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
+    testImplementation "org.mockito:mockito-inline:4.5.1"
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
 }
