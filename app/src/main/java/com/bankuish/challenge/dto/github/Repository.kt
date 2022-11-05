@@ -11,7 +11,7 @@ data class Repository(
     @SerializedName("name")
     val name: String,
     @SerializedName("description")
-    val description: String?,
+    val description: String? = null,
     @SerializedName("full_name")
     val fullName: String,
     @SerializedName("stargazers_count")
