@@ -6,11 +6,11 @@ import com.bankuish.challenge.dto.github.RepositorySearch
 import retrofit2.Response
 import retrofit2.awaitResponse
 
-class GithubRepositoryRemoteResource(
+open class GithubRepositoryRemoteResource(
     private val service: RetrofitService
 ) {
 
-    suspend fun searchRepositories(
+    open suspend fun searchRepositories(
         query: String,
         pageSize: Int,
         page: Int

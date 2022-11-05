@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/searchFragment">
+    app:startDestination="@id/search_fragment">
 
     <fragment
-        android:id="@+id/searchFragment"
+        android:id="@+id/search_fragment"
         android:name="com.bankuish.challenge.views.search.SearchFragment"
         android:label="Inicio"
         tools:layout="@layout/fragment_search">
 
         <action
             android:id="@+id/action_searchFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            app:destination="@id/details_fragment" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/detailsFragment"
+        android:id="@+id/details_fragment"
         android:name="com.bankuish.challenge.views.details.DetailsFragment"
         android:label="Repositorio"
         tools:layout="@layout/fragment_details">

@@ -11,11 +11,11 @@ import com.bankuish.challenge.data.pagination.PaginationDataSource
 import com.bankuish.challenge.dto.github.Repository
 import kotlinx.coroutines.flow.Flow
 
-class SearchViewModel(
+open class SearchViewModel(
     private val repository: GithubRepository
 ): ViewModel() {
 
-    fun queryRepositories(query: String, pageSize: Int): Flow<PagingData<Repository>> {
+    open fun queryRepositories(query: String, pageSize: Int): Flow<PagingData<Repository>> {
         return Pager(
                 config = PagingConfig(pageSize = pageSize, enablePlaceholders = false),
                 pagingSourceFactory = {

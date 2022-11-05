@@ -14,11 +14,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
+import org.mockito.Mockito.mock
 import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.any
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.verify
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
 
@@ -51,7 +49,12 @@ class RepositoryUnitTest {
 
     @Test
     fun remoteOkThenRepositoryReturnsOk() = runTest {
-        val items = listOf(fakeRepository(1), fakeRepository(2))
+        val repo1: Repository = mock()
+        val repo2: Repository = mock()
+        whenever(repo1.id).thenReturn(1)
+        whenever(repo2.id).thenReturn(2)
+
+        val items = listOf(repo1,repo2)
         val okResponse = RepositoryResponse(RepositorySearch(1,false,items))
 
         whenever(dataSource.searchRepositories(eq(""), any(), any())).thenReturn(okResponse)
@@ -63,15 +66,6 @@ class RepositoryUnitTest {
         assertEquals(message = "El tamaño de la respuesta no coincide", expected = 2, actual = repositoryResponse.data?.items?.size)
         assertEquals(message = "El primer item de la respuesta no coincide", expected = 1, actual = repositoryResponse.data?.items?.get(0)?.id)
         assertEquals(message = "El segundo item de la respuesta no coincide", expected = 2, actual = repositoryResponse.data?.items?.get(1)?.id)
-    }
-
-    private fun fakeRepository(id: Int): Repository {
-        return Repository(
-            id = id, name = "name1", fullName = "fullName1",
-            stargazersCount = 1, watchersCount = 1, language="kotlin", forksCount = 1, issuesCount = 1,
-            topics = listOf(), branchName = "branchName1",
-            user = User(id = id, name = "uname1", avatarUrl = "avatarUrl1", url = "url1")
-        )
     }
 
 }

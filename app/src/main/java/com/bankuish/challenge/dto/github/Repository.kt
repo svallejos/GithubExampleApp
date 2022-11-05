@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Repository(
+open class Repository(
     @SerializedName("id")
     val id: Int,
     @SerializedName("name")
@@ -32,4 +32,21 @@ data class Repository(
     val license: License? = null,
     @SerializedName("default_branch")
     val branchName: String
-): Parcelable
+): Parcelable {
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as Repository
+
+        if (id != other.id) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        return id
+    }
+
+}
