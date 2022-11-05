@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">BankuishChallenge</string>
-    <string name="retry">Reintentar</string>
-    <string name="error_loading_data">Error al cargar los datos</string>
+    <string name="main_branch">Rama principal</string>
+    <string name="license">Licencia</string>
+    <string name="language">Lenguaje</string>
+    <string name="without_license">Sin licencia</string>
 </resources>

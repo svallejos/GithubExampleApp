@@ -25,12 +25,8 @@
 
         <argument
             android:name="repository"
-            app:nullable="true"
+            app:nullable="false"
             app:argType="com.bankuish.challenge.dto.github.Repository" />
-
-        <argument
-            android:name="repositoryId"
-            app:argType="integer" />
 
     </fragment>
 

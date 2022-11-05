@@ -62,7 +62,6 @@ class SearchFragment: Fragment() {
 
     private fun onSelectRepository(repository: Repository) {
         val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
-            repositoryId = repository.id,
             repository = repository
         )
         this.findNavController().navigate(action)
