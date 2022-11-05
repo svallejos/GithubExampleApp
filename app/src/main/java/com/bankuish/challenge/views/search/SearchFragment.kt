@@ -42,7 +42,7 @@ class SearchFragment: Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 adapter.loadStateFlow.collect { loadStates ->
-                    binding.prependProgress.isVisible = loadStates.source.prepend is LoadState.Loading || loadStates.refresh is LoadState.Loading
+                    binding.swipeRefresh.isRefreshing = loadStates.source.prepend is LoadState.Loading || loadStates.refresh is LoadState.Loading
                     binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
                 }
             }
@@ -55,6 +55,11 @@ class SearchFragment: Fragment() {
                     adapter.submitData(it)
                 }
             }
+        }
+
+        // Permito refrescar la información
+        this.binding.swipeRefresh.setOnRefreshListener {
+            adapter.refresh()
         }
 
         return binding.root
