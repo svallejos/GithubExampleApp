@@ -1,10 +1,13 @@
 package com.bankuish.challenge.dto.github
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class Repository(
     @SerializedName("id")
-    val id: Long,
+    val id: Int,
     @SerializedName("name")
     val name: String,
     @SerializedName("full_name")
@@ -23,4 +26,4 @@ data class Repository(
     val user: User,
     @SerializedName("license")
     val license: License? = null
-)
+): Parcelable

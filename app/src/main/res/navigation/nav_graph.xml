@@ -10,6 +10,28 @@
         android:name="com.bankuish.challenge.views.search.SearchFragment"
         android:label="Inicio"
         tools:layout="@layout/fragment_search">
+
+        <action
+            android:id="@+id/action_searchFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.bankuish.challenge.views.details.DetailsFragment"
+        android:label="Repositorio"
+        tools:layout="@layout/fragment_details">
+
+        <argument
+            android:name="repository"
+            app:nullable="true"
+            app:argType="com.bankuish.challenge.dto.github.Repository" />
+
+        <argument
+            android:name="repositoryId"
+            app:argType="integer" />
+
     </fragment>
 
 </navigation>

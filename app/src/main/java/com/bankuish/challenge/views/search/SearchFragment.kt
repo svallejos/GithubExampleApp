@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bankuish.challenge.databinding.FragmentSearchBinding
@@ -59,7 +61,11 @@ class SearchFragment: Fragment() {
     }
 
     private fun onSelectRepository(repository: Repository) {
-
+        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
+            repositoryId = repository.id,
+            repository = repository
+        )
+        this.findNavController().navigate(action)
     }
 
 }
