@@ -35,4 +35,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/retry_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginEnd="24dp"
+        app:fabSize="mini"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/purple_500"
+        app:tint="@color/white"
+        app:srcCompat="@drawable/icon_refresh" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,10 +44,7 @@ class SearchFragment: Fragment() {
                 adapter.loadStateFlow.collect { loadStates ->
                     binding.swipeRefresh.isRefreshing = loadStates.source.prepend is LoadState.Loading || loadStates.source.refresh is LoadState.Loading
                     binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
-
-                    if (loadStates.source.refresh is LoadState.Error || loadStates.source.append is LoadState.Error)
-                        Toast.makeText(binding.root.context,"error", Toast.LENGTH_SHORT).show()
-
+                    binding.retryButton.isVisible = loadStates.source.refresh is LoadState.Error || loadStates.source.append is LoadState.Error
                 }
             }
         }
@@ -65,7 +62,9 @@ class SearchFragment: Fragment() {
         this.binding.swipeRefresh.setOnRefreshListener {
             adapter.refresh()
         }
-
+        this.binding.retryButton.setOnClickListener {
+            adapter.retry()
+        }
         return binding.root
     }
 
