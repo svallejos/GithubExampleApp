@@ -38,7 +38,10 @@ class Page<T> {
         get() = if (startItem == -1) 0 else endItem - startItem + 1
 
     val number: Int
-        get() = if (startItem == -1) 0 else startItem / size
+        get() = if (startItem == -1) 0 else endItem / size
+
+    val matchPage: Boolean
+        get() = if (startItem == -1) false else (startItem % size == 0)
 
     override fun toString(): String {
         return "${this.startItem}-${this.endItem}: ${this.items.size}"
