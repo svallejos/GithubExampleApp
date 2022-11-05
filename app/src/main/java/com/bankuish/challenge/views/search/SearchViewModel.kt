@@ -15,9 +15,9 @@ class SearchViewModel(
     private val repository: GithubRepository
 ): ViewModel() {
 
-    fun queryRepositories(query: String): Flow<PagingData<Repository>> {
+    fun queryRepositories(query: String, pageSize: Int): Flow<PagingData<Repository>> {
         return Pager(
-                config = PagingConfig(10, enablePlaceholders = false),
+                config = PagingConfig(pageSize = pageSize, enablePlaceholders = false),
                 pagingSourceFactory = {
                     val source = PaginationDataSource(repository.getPaginated(query))
                     source.keyReuseSupported
