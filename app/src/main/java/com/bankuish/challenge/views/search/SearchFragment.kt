@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,7 +41,7 @@ class SearchFragment: Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 adapter.loadStateFlow.collect { loadStates ->
-                    binding.swipeRefresh.isRefreshing = loadStates.source.prepend is LoadState.Loading || loadStates.refresh is LoadState.Loading
+                    binding.swipeRefresh.isRefreshing = loadStates.source.prepend is LoadState.Loading || loadStates.source.refresh is LoadState.Loading
                     binding.appendProgress.isVisible = loadStates.source.append is LoadState.Loading
                 }
             }
@@ -66,9 +65,7 @@ class SearchFragment: Fragment() {
     }
 
     private fun onSelectRepository(repository: Repository) {
-        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(
-            repository = repository
-        )
+        val action = SearchFragmentDirections.actionSearchFragmentToDetailsFragment(repository = repository)
         this.findNavController().navigate(action)
     }
 

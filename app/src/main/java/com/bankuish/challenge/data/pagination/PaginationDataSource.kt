@@ -14,7 +14,10 @@ class PaginationDataSource<T: Any> constructor(
     override suspend fun load(
         params: LoadParams<Int>,
     ): LoadResult<Int, T> {
-        val key = params.key
+        var key = params.key
+        if (params is LoadParams.Refresh) {
+            key = 0
+        }
         val start = key ?: 0
         val size = params.loadSize
 

@@ -18,7 +18,11 @@ class SearchViewModel(
     fun queryRepositories(query: String): Flow<PagingData<Repository>> {
         return Pager(
                 config = PagingConfig(10, enablePlaceholders = false),
-                pagingSourceFactory = { PaginationDataSource(repository.getPaginated(query)) }
+                pagingSourceFactory = {
+                    val source = PaginationDataSource(repository.getPaginated(query))
+                    source.keyReuseSupported
+                    source
+                }
         ).flow.cachedIn(viewModelScope)
     }
 

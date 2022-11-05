@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/layout/adapter_pagination_footer.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_details.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.2078125" />
+        <entry key="app/src/main/res/layout/list_item_adapter.xml" value="0.17083333333333334" />
         <entry key="app/src/main/res/layout/list_item_repository.xml" value="0.18645833333333334" />
       </map>
     </option>
