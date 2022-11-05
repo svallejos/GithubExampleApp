@@ -1,8 +1,7 @@
-package com.bankuish.challenge
+package com.bankuish.challenge.views
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bankuish.challenge.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -11,7 +10,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.binding = ActivityMainBinding.inflate(layoutInflater)
-        this.setContentView(this.binding.root)
-    }
+
+        this.binding = ActivityMainBinding.inflate(this.layoutInflater)
+        this.setContentView(binding.root)
+   }
+
 }

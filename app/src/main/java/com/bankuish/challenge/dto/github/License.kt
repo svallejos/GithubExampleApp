@@ -2,7 +2,7 @@ package com.bankuish.challenge.dto.github
 
 import com.google.gson.annotations.SerializedName
 
-class RepositoryLicense(
+data class License(
     @SerializedName("key")
     val key: String,
     @SerializedName("name")

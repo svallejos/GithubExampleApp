@@ -11,6 +11,4 @@ class RetrofitService {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-
-
 }

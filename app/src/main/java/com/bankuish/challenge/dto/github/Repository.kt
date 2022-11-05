@@ -2,7 +2,7 @@ package com.bankuish.challenge.dto.github
 
 import com.google.gson.annotations.SerializedName
 
-class Repository(
+data class Repository(
     @SerializedName("id")
     val id: Long,
     @SerializedName("name")
@@ -22,5 +22,5 @@ class Repository(
     @SerializedName("owner")
     val user: User,
     @SerializedName("license")
-    val license: RepositoryLicense? = null
+    val license: License? = null
 )
